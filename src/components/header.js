@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'; 
 import * as ROUTES from '../routes/routes';
+import SignOut from '../components/signout';
 
 const Hedaer = () => (
 <div>
@@ -13,9 +14,7 @@ const Hedaer = () => (
                 <ul class="navbar-nav ">
                 <li class="nav-item">
                     <Link to={ROUTES.SIGNIN}>SIGN IN </Link></li>
-                <li >
-
-               
+                <li>
                 </li>
                 <li class="nav-item">
                     <Link to={ROUTES.SIGNUP}>Sign Up</Link> 
@@ -24,10 +23,10 @@ const Hedaer = () => (
                   <Link to={ROUTES.DASHBOARD}>Dashboard</Link>
                 </li>
                 <li class="nav-item">
-                  <Link to={ROUTES.SIGNOUT}>SignOut</Link>
-                </li>
-                <li class="nav-item">
                     <Link to={ROUTES.FORGETPASSWORD}>forgetpassword</Link>
+                </li>
+                <li>
+                  <SignOut/>
                 </li>
               </ul>
             </div>
