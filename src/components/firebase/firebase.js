@@ -1,5 +1,8 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import "firebase/storage"
+import "firebase/firestore"
+import firebase from 'firebase';
 
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -10,13 +13,13 @@ const config = {
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   };
 
+
   class Firebase {
       constructor(){
           app.initializeApp(config);
-
-          this.auth = app.auth();
+          this.auth = app.auth();   
       }
-
+      
       //auth api 
 
       doCreateUserWithEmailAndPassword = (email,password) => 
@@ -26,13 +29,31 @@ const config = {
         this.auth.signInWithEmailAndPassword(email,password);
 
       doSignOut = () => this.auth.signOut();
-
+      
       doPasswordReset = (email) => 
         this.auth.sendPasswordResetEmail(email);
         
       doPasswordUpdate = (password) => 
         this.auth.currentUser.updatePassword(password);
 
+      
+
   }
 
+
+  
+  // const projectStorage = firebase.storage();
+  
+  
+  
   export default Firebase ;
+  // export {projectStorage}
+
+
+
+
+
+
+
+
+
