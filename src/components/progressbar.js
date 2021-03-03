@@ -1,7 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import useStorage from "./hooks/useStorage";
-
-
+import { withFirebase } from "./firebase";
 
 
 const ProgressBar =  ({file,setFile}) => {
@@ -9,11 +8,17 @@ const ProgressBar =  ({file,setFile}) => {
     const {url , progress } = useStorage(file);
     console.log(progress,url)
 
+    useEffect(() => {
+        if(url){
+            setFile(null);
+        }
+    }, [url,setFile])
+
     return(
-        <div>
-            <h1>ProgressBar</h1>
-        </div>
+        <div className="progress-bar" style={{width: progress + '%'}}>ProgressBar</div>
     )
 }
 
-export default ProgressBar;
+export default withFirebase(ProgressBar);
+
+

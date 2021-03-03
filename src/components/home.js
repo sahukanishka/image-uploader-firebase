@@ -1,10 +1,13 @@
 import React from 'react'
-import Hedaer from './header'
+import {withAuthorization} from './session';
 const Home = () => (
-            <div>
-                <Hedaer />
+            <div> 
+              <h1>
+                Home page 
+              </h1>
+              <p>Only for signin users</p>
             </div>
           );
-           
+const condition = authUser => !!authUser;
 
-export default Home ;
+export default withAuthorization(condition)(Home); 

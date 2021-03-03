@@ -1,7 +1,6 @@
 import React,{useState} from "react";
-import ProgressBar from './progressbar'
-
-
+import ProgressBar from './progressbar';
+import {withFirebase} from "./firebase";
 
 const UploaderBox = () => {
     const [file,setFile] = useState(null);
@@ -26,10 +25,12 @@ const UploaderBox = () => {
             <div>
                 {error && <div>{error}</div>}
                 {file && <div>{file.name}</div>}
-                {file && <ProgressBar file={file} setFile={setFile}/>}
+                {file && <ProgressBar file={file}/>}
             </div>
         </form>
     )
 }
 
-export default UploaderBox;
+export default withFirebase(UploaderBox);
+
+

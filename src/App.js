@@ -5,11 +5,13 @@ import Signin from "./components/signin";
 import Signup from "./components/signup";
 import Hedaer from './components/header';
 import Signout from './components/signout'
+import Home from "./components/home";
 import Dashboard from './components/dashboard';
 import Forgetpassword from './components/forgetpassword'
 import { withFirebase } from "./components/firebase";
 import * as ROUTES from "./routes/routes";
-
+import home from './components/home';
+import { withAuthentication } from './components/session';
 
 
 
@@ -35,12 +37,14 @@ class App extends Component {
   componentWillUnmount() {
     this.listener();
   }
-  
+
   render(){
     return(
       <Router>
         <div className="App">
+      
         <Hedaer authUser={this.state.authUser}/>
+        <Route exact path={ROUTES.HOME} component={Home} />
         <Route exact path={ROUTES.SIGNUP} component={Signup} />
         <Route exact path={ROUTES.SIGNIN} component={Signin}/>
         <Route exact path={ROUTES.SIGNOUT} component={Signout}/>
@@ -48,9 +52,8 @@ class App extends Component {
         <Route exact path={ROUTES.FORGETPASSWORD} component={Forgetpassword}/>
         </div>
       </Router>
-  
     );
   }
 }
 
-export default withFirebase(App);
+export default withAuthentication(App);

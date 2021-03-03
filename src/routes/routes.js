@@ -4,3 +4,4 @@ export const SIGNUP = "/signup";
 export const SIGNIN = "/signin";
 export const SIGNOUT = "/signout";
 export const FORGETPASSWORD = "/forgetpassword";
+export const HOME = "/home";
