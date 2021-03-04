@@ -25,7 +25,7 @@ class Firebase {
           this.db = app.firestore()
           this.firestore = app.firestore
           this.files = app.storage()
-
+        
   
       }
       

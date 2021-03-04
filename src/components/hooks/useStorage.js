@@ -12,10 +12,11 @@ const useStorage = (file) => {
         const projectStorage = firebase.files;
         const projectFireStore = firebase.db; 
         const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-
+ 
+        const storageRef = projectStorage.ref(file.name);
         const collectionRef = projectFireStore.collection('images');
         
-        const storageRef = projectStorage.ref(file.name);
+
         
         storageRef.put(file).on('state_changed', (snap) => {
             let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
@@ -25,7 +26,8 @@ const useStorage = (file) => {
           }, async () => {
             const url = await storageRef.getDownloadURL();
             const createdAt = timestamp();
-            await collectionRef.add({ url, createdAt });
+            collectionRef.add({ url : url, createdAt });
+      
             setUrl(url);
           });
         }, [file]);

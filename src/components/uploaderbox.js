@@ -29,6 +29,7 @@ const UploaderBox = () => {
             </div>
         </form>
     )
+    
 }
 
 export default withFirebase(UploaderBox);
